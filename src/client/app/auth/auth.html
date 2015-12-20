@@ -1,0 +1,10 @@
+<main data-auth-panel>
+  <span ng-class="{ active: active.login }">
+    <button class="btn btn-primary" ng-click="select('login')">Login</button>
+  </span>
+  <span ng-class="{ active: active.signup }">
+    <button class="btn btn-primary" ng-click="select('signup')">Signup</button>
+  </span>
+  <div ng-include="'auth/auth.login.html'" ng-if="active.login"></div>
+  <div ng-include="'auth/auth.signup.html'" ng-if="active.signup"></div>
+</main>

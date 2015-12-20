@@ -1,0 +1,9 @@
+<nav class="navbar" data-topnav>
+  <span class="nav-icon"></span>
+  <span>
+    <a ui-sref="auth({ '#' : 'login'})" ng-if="!isLogged">Login</a>
+    <a ui-sref="auth({ '#' : 'signup'})" ng-if="!isLogged">Sign up</a>
+    <a ui-sref="profile" ng-if="isLogged">{{user.username}}</a>
+    <button ng-click="logout()" ng-if="isLogged">Log out</button>
+  </span>
+</nav>
