@@ -3,11 +3,13 @@
 
   angular
     .module('app.auth')
-    .directive('authPanel', authPanel);
+    .directive('authPanel', authPanel)
+    .controller('AuthController', AuthController);
 
   authPanel.$inject = ['authService', 'routerManager'];
   function authPanel(authService, routerManager) {
     return {
+      controller: 'AuthController',
       link: link
     };
 
@@ -44,5 +46,10 @@
         });
       };
     }
+  }
+
+  AuthController.$inject = ['$scope'];
+  function AuthController($scope) {
+    var vm = this;
   }
 })();

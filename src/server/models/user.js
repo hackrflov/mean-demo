@@ -6,7 +6,8 @@ var bcrypt   = require('bcrypt-nodejs');
 
 var userSchema = mongoose.Schema({
   username: String,
-  password: String
+  password: String,
+  thumbnail: { type: String, default: 'public/assets/img/default.png' }
 });
 
 // sign up
@@ -31,6 +32,15 @@ userSchema.statics.signup = function(data, done) {
       if (err) return done(err);
       return done(null, newUser);
     });
+  });
+};
+
+// profile
+userSchema.statics.profile = function(data, done) {
+  var User = this;
+  User.findOne({ _id : data._id }, function(err, user) {
+    if (err) return done(err);
+    return done(null, user);
   });
 };
 

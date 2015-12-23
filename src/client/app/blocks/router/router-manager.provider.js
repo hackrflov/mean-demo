@@ -48,9 +48,11 @@
 
       var service = {
         hash: hash,
+        currentState: currentState,
         stateData: stateData,
         stateCounts: stateCounts,
-        goBackState: goBackState
+        goBackState: goBackState,
+        goToState: goToState
       };
 
       init();
@@ -118,9 +120,17 @@
         return $state.current.data;
       }
 
+      function currentState() {
+        return $state.current;
+      }
+
       function hash(newHash) {
         if (newHash) $location.hash(newHash);
         return $location.hash();
+      }
+
+      function goToState(state) {
+        $state.transitionTo(state);
       }
 
       function stateChangeSuccess() {

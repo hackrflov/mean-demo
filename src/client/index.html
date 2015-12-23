@@ -9,12 +9,12 @@
     <title ng-bind="title"></title>
 
     <!-- inject-vendor:css -->
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bower_components/toastr/toastr.css" rel="stylesheet" />
     <!-- endinject -->
 
     <!-- inject:css -->
+    <link href="/src/client/content/main.css" rel="stylesheet" />
     <!-- endinject -->
   </head>
   <body>
@@ -22,12 +22,29 @@
     <div ng-include="'/src/client/app/layout/shell.html'"></div>
     <!-- endshell -->
 
-    <!-- inject:js -->
+    <!-- inject-CDN:js -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.4.8/angular.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="public/assets/jquery.min.js"><\/script>')</script>
+    <script>window.angular || document.write('<script src="public/assets/angular.min.js"><\/script>')</script>
+
+    <!-- inject-local:js -->
     <script src="/public/assets/vendor.js"></script>
     <script src="/public/assets/bundle.js"></script>
 
     <!-- inject-help:js -->
     <script src="/public/assets/templates.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-12345678-1','mean-demo');ga('send','pageview');
+    </script>
 
     <!-- endinject -->
   </body>

@@ -5,8 +5,8 @@
     .module('blocks.auth')
     .factory('authService', authServiceProvider);
 
-  authServiceProvider.$inject = ['$http', '$cookies', '$rootScope', 'logger'];
-  function authServiceProvider($http, $cookies, $rootScope, logger) {
+  authServiceProvider.$inject = ['$http', '$cookies', '$rootScope', 'logger', '$state'];
+  function authServiceProvider($http, $cookies, $rootScope, logger, $state) {
     init();
     var service = {
       login : login,
@@ -61,6 +61,9 @@
         done(null, user);
       },
       function failure(res) {
+        var a = new Error('12333');
+        console.log(a);
+        console.log(res);
         var err = res.data;
         logger.error('Sign up failed: ' + err.msg);
         done(err);
@@ -72,6 +75,7 @@
       .then(function success(res) {
           removeCredential();
           logger.success('Log out successfully');
+          $state.transitionTo('home');
         },
         function failure(res) {
           logger.error(res.data.msg);

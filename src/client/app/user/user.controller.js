@@ -9,10 +9,11 @@
   function UserController(userService, logger) {
     var vm = this;
     vm.title = 'User Profile';
-    userService.profile(function done(err, username) {
+    userService.profile(function done(err, user) {
       if (err) return logger.error(err);
+      if (!user) return logger.error('profile err');
+      vm.user = user;
       logger.success('get profile!');
-      vm.username = username;
     });
   }
 })();

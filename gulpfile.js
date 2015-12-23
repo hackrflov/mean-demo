@@ -15,10 +15,11 @@ var path = {
     bundle: ['src/client/app/app.module.js',
              'src/client/app/**/*.module.js',
              'src/client/app/**/*.js'],
-    vendor: ['bower_components/jquery/dist/jquery.min.js',
-             'bower_components/angular/angular.min.js',
-             'bower_components/**/*.min.js',
-             '!bower_components/font-awesome/**/*.js']
+    vendor: ['bower_components/angular-animate/angular-animate.min.js',
+             'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+             'bower_components/angular-cookies/angular-cookies.min.js',
+             'bower_components/toastr/toastr.min.js'
+            ]
   },
   templates: 'src/client/app/**/*.html'
 };
@@ -31,22 +32,20 @@ gulp.task('build', ['js-bundle', 'js-vendor', 'templates']);
 gulp.task('watch', function() {
   gulp.watch(path.templates, ['build']);
   gulp.watch(path.js.bundle, ['js-bundle']);
+  gulp.watch(path.js.vendor, ['js-vendor']);
 });
 
 gulp.task('js-bundle', function() {
   gulp.src(path.js.bundle)
     .pipe(using())
-    .pipe(sourcemaps.init())
       .pipe(concat('bundle.js'))
       .pipe(gutil.env.type == 'production' ? uglify() : gutil.noop())
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/assets'));
 });
 gulp.task('js-vendor', function() {
   gulp.src(path.js.vendor)
-    .pipe(sourcemaps.init())
+    .pipe(using())
       .pipe(concat('vendor.js'))
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/assets'));
 });
 
@@ -54,6 +53,7 @@ function jsBuild(src, dest) {
 }
 gulp.task('templates', function() {
   return gulp.src(path.templates)
+    .pipe(using())
     .pipe(minifyHTML({
       quotes: true
     }))

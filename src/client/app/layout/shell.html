@@ -1,16 +1,19 @@
+<!-- shellController as shellVm -->
 <div class="container" data-shell>
-  <header ng-include="'layout/topnav.html'" ng-if="showTopnav">
+  <header ng-include="'layout/topnav.html'" ng-if="shellVm.showTopnav">
   </header>
-  <header class="jumbotron">
-    <h1>MEAN DEMO</h1>
-  </header>
-  <hr>
 
   <section id="content" class="content">
+    <header class="jumbotron">
+      <h1>MEAN DEMO</h1>
+    </header>
+    <hr>
     <div ui-view class="shuffle-animation"></div>
   </section>
 
   <hr>
-  <p>Created by hackrflov</p>
+  <footer>
+    <p>Created by hackrflov</p>
+</footer>
 </div>
 

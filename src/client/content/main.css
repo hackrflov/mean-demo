@@ -1,0 +1,127 @@
+/* Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+/* Custom BootStrap */
+html, body {
+  height: 100%;
+  font-size: 14px;
+}
+hr {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+header {
+  background-color: #E0E0E0;
+  min-height: 5vh;
+}
+#content {
+  width: 50%;
+  min-height: 80vh;
+  margin: auto;
+  padding: 50px 0 50px 0;
+}
+footer {
+  min-height: 15vh;
+  background-color: #E0E0E0;
+}
+
+.container {
+  width: 100%;
+  margin:0;
+  padding: 0;
+}
+
+p {
+  word-wrap: break-word;
+}
+footer > p {
+  width: 50%;
+  margin: auto;
+  padding-top: 10px;
+}
+
+.header-nav {
+  list-style: outside none none;
+}
+
+  .header-nav .header-nav-item {
+    padding: 0 5px 0 5px;
+    display: inline-block;
+  }
+
+  .header-nav .header-nav-item a {
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px;
+  }
+  .header-nav .header-nav-item a:hover {
+    background-color: white;
+  }
+
+a {
+  color: #000;
+}
+
+  a:hover {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .dropdown-menu > li:hover {
+    background-color: #E0E0E0;
+  }
+  .dropdown-menu > li > a {
+    width: 100%;
+  }
+  .dropdown-menu > li > a:focus, .dropdown-menu >  li > a:hover {
+    background: none !important;
+  }
+
+
+.auth-panel, .login-panel, .signup-panel {
+  margin-top: 10px;
+}

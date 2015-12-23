@@ -9,7 +9,7 @@ module.exports = function (app, passport) {
   app.post('/api/login', function(req, res) {
     passport.authenticate('local', function(err, user, msg) {
       if (err) return res.status(400).json(err);
-      if (!user) return res.status(401).json(new Error(msg));
+      if (!user) return res.status(401).json({ msg: msg});
       req.logIn(user, function(err) {
         if (err) return res.status(402).json(err);
         return res.status(200).json(user);
@@ -18,11 +18,11 @@ module.exports = function (app, passport) {
   });
 
   app.post('/api/signup', function(req, res) {
-    User.signup(req.body, function done(err, user, msg) {
+    User.signup(req.body, function(err, user, msg) {
       if (err) return res.status(400).json(err);
 
       // username already taken
-      if (!user) return res.status(401).json(new Error(msg));
+      if (!user) return res.status(401).json({ msg : msg });
       req.login(user, function(err) {
         if (err) return res.status(400).json(err);
         return res.status(200).json(user);
@@ -36,8 +36,10 @@ module.exports = function (app, passport) {
   });
 
   app.get('/api/profile', function(req, res) {
-    console.log(req);
-    res.json(req.user.username);
+    console.log(req.user);
+    User.profile(req.user, function(err, user, msg) {
+      res.json(user);
+    });
   });
 
   app.get('*', function (req, res) {

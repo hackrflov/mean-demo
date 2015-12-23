@@ -18,7 +18,7 @@
           url: '/profile',
           templateUrl: 'user/profile.html',
           controller: 'UserController as userVm',
-          authenticate: true 
+          authenticate: true
         }
       }
     ];

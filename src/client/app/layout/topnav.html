@@ -1,9 +1,28 @@
-<nav class="navbar" data-topnav>
-  <span class="nav-icon"></span>
-  <span>
-    <a ui-sref="auth({ '#' : 'login'})" ng-if="!isLogged">Login</a>
-    <a ui-sref="auth({ '#' : 'signup'})" ng-if="!isLogged">Sign up</a>
-    <a ui-sref="profile" ng-if="isLogged">{{user.username}}</a>
-    <button ng-click="logout()" ng-if="isLogged">Log out</button>
-  </span>
+<!-- ShellController as shellVm -->
+<nav class="header" data-topnav>
+  <div class="container">
+    <a class="header-logo" href="/">
+      <span></span>
+    </a>
+    <ul class="header-nav user-nav">
+      <li class="header-nav-item" ng-if="!shellVm.isLogged">
+        <a ui-sref="auth({ '#' : 'login'})">Login</a>
+      </li>
+      <li class="header-nav-item" ng-if="!shellVm.isLogged">
+        <a ui-sref="auth({ '#' : 'signup'})">Sign up</a>
+      </li>
+
+      <li class="header-nav-item dropdown" ng-if="shellVm.isLogged">
+        <a href="#" class="header-nav-link dropdown-toggle" data-toggle="dropdown" >
+          <img src={{shellVm.thumbnail}} width="48px" height="48px" />
+          <span class="caret">
+          </span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a ui-sref="profile">profile</a></li>
+          <li><a href="/logout" ng-click="shellVm.logout()">log out</a></li>
+        </ul>
+      </li>
+    </ul>
+</div>
 </nav>
